@@ -31,10 +31,10 @@ def main():
     for x in range(6):
         for y in range(6):
             p1 = 0
-            trials = 100000
+            trials = 10000
             for i in range(trials):
                 health1 = [70]
-                health2 = [60]
+                health2 = [70]
                 player = 1
                 while health1[0] > 0 and health2[0] > 0:
                     if player == 2:
