@@ -1,11 +1,18 @@
 import random
 import time
 import game_1d.player
+from os import system, name
 
 def dramatic_pause():
     time.sleep(2 + random.random()*2)
 
 def card(card_text):
+    input('Press Enter to continue')
+    if name == 'nt':
+        _ = system('cls')
+
+    else:
+        _ = system('clear')
     print("--------------------")
     print(card_text)
     print("--------------------")
@@ -91,7 +98,7 @@ class game():
             for player in self.players:
                 print("%10s Health %4d" %(player.name, player.health))
                 if player.health < 0:
-                    game_end = True
+                    self.game_end = True
             self.curr_player, self.opponent = self.opponent, self.curr_player
 
 
