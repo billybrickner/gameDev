@@ -30,13 +30,15 @@ class game():
         # Set positions
         self.players[0].position = 3
         self.players[1].position = 7
-        card("Turn Order")
-        choose = random.randint(0,NUMBER_OF_PLAYERS-1)
-        self.curr_player = self.players[choose]
-        self.opponent = self.players[(choose + 1)%NUMBER_OF_PLAYERS]
-        print("%s Goes First" % self.curr_player.name)
         self.repeat = True
         while self.repeat == True:
+            card("Turn Order")
+            choose = random.randint(0,NUMBER_OF_PLAYERS-1)
+            self.curr_player = self.players[choose]
+            self.opponent = self.players[(choose + 1)%NUMBER_OF_PLAYERS]
+            print("%s Goes First" % self.curr_player.name)
+            for person in self.players:
+                person.health = 70
             self.game_end = False
             self.loop()
             card("Play Again?")
@@ -53,6 +55,7 @@ class game():
                         ( 11, 15)]
         weak_hit, strong_hit = hit_chances[self.curr_player.attack_pips-1]
         attacks = ["Riposte", "Parry", "Jab", "Slash", "Lunge", "Overhead Swing"]
+        print("Attack Type:    ",attacks[self.curr_player.attack_pips])
         card("Attack")
         print("Attack Type:    ",attacks[self.curr_player.attack_pips])
         print("Weak hit roll:  ", weak_hit)
